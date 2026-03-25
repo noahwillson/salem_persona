@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 const footerLinks = [
@@ -44,8 +45,14 @@ export default function Footer({ socialLinks = [], behanceUrl }: FooterProps) {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           {/* Brand */}
           <div>
-            <Link href="/" className="font-serif text-3xl text-foreground">
-              Salem<span className="text-accent">.</span>
+            <Link href="/">
+              <Image
+                src="/logo.svg"
+                alt="Mohamed Salem"
+                width={140}
+                height={50}
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="mt-4 text-sm text-secondary max-w-xs leading-relaxed">
               Freelance Graphic Designer specializing in Brand Identity, Logo
