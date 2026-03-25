@@ -29,7 +29,11 @@ export default async function HomePage() {
       />
       <FeaturedProjects projects={projects} />
       <ServicesMarquee />
-      <AboutPreview bio={settings?.bio} portrait={settings?.portrait} />
+      <AboutPreview
+        bio={settings?.bio}
+        portrait={settings?.portrait}
+        title={settings?.aboutPreviewTitle}
+      />
       <TestimonialsCarousel testimonials={testimonials} />
       <CTASection />
     </>
