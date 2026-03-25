@@ -134,8 +134,8 @@ export default async function AboutPage() {
               </div>
             </div>
 
-            {/* Behance link */}
-            <div>
+            {/* Links */}
+            <div className="flex flex-wrap gap-3">
               <a
                 href={
                   settings?.behanceUrl ||
@@ -148,6 +148,17 @@ export default async function AboutPage() {
                 View Behance Profile
                 <ArrowUpRight size={16} />
               </a>
+              {settings?.resumeUrl && (
+                <a
+                  href={settings.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground text-sm uppercase tracking-[0.15em] hover:border-accent hover:text-accent transition-all duration-300"
+                >
+                  Download Resume
+                  <ArrowUpRight size={16} />
+                </a>
+              )}
             </div>
           </div>
         </div>
