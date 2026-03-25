@@ -22,7 +22,11 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero />
+      <Hero
+        name={settings?.name}
+        tagline={settings?.tagline}
+        availabilityStatus={settings?.availabilityStatus}
+      />
       <FeaturedProjects projects={projects} />
       <ServicesMarquee />
       <AboutPreview bio={settings?.bio} portrait={settings?.portrait} />
