@@ -1,11 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0f0f;
-  --foreground: #f5f0e8;
-  --accent: #c9a96e;
-  --secondary: #6b6b6b;
-  --card: #1a1a1a;
+  /* Design System */
+  --primary-red: #820d00;
+  --bg-dark: #1a1a1a;
+  --text-main: #f4f4f2;
+  --text-secondary: #a6a6a6;
+  --tech-grey: #cbd5e0;
+
+  /* Tailwind theme compatibility */
+  --background: var(--bg-dark);
+  --foreground: var(--text-main);
+  --accent: var(--primary-red);
+  --secondary: var(--text-secondary);
+  --card: #222222;
   --border: #2a2a2a;
 }
 
@@ -16,9 +24,11 @@
   --color-secondary: var(--secondary);
   --color-card: var(--card);
   --color-border: var(--border);
-  --font-sans: var(--font-source-sans);
-  --font-serif: var(--font-libre-franklin);
-  --font-script: var(--font-marck-script);
+  --color-tech-grey: var(--tech-grey);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-jakarta);
+  --font-arabic-body: var(--font-ibm-arabic);
+  --font-arabic-headlines: var(--font-cairo);
 }
 
 @layer base {
@@ -29,7 +39,40 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-sans, "Inter", sans-serif);
+    font-family: var(--font-inter, "Inter", sans-serif);
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-jakarta, "Plus Jakarta Sans", sans-serif);
+    letter-spacing: 0.15em;
+    line-height: 1.5;
+  }
+
+  :lang(ar) body,
+  [lang="ar"],
+  [dir="rtl"] {
+    font-family: var(--font-ibm-arabic, "IBM Plex Sans Arabic", sans-serif);
+  }
+
+  :lang(ar) h1,
+  :lang(ar) h2,
+  :lang(ar) h3,
+  :lang(ar) h4,
+  :lang(ar) h5,
+  :lang(ar) h6,
+  [lang="ar"] h1,
+  [lang="ar"] h2,
+  [lang="ar"] h3,
+  [lang="ar"] h4,
+  [lang="ar"] h5,
+  [lang="ar"] h6 {
+    font-family: var(--font-cairo, "Cairo", sans-serif);
   }
 
   /* Scrollbar styling */
