@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -40,13 +41,17 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
         {/* Logo */}
         <Link href="/" className="group">
-          <motion.span
-            className="font-serif text-2xl tracking-tight text-foreground"
-            whileHover={{ scale: 1.02 }}
-          >
-            Salem
-            <span className="text-accent">.</span>
-          </motion.span>
+          <motion.div whileHover={{ scale: 1.02 }}>
+            <Image
+              src="/logo.svg"
+              alt="Mohamed Salem"
+              width={120}
+              height={44}
+              className="h-8 w-auto"
+              priority
+              loading="eager"
+            />
+          </motion.div>
         </Link>
 
         {/* Desktop Navigation */}

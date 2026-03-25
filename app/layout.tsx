@@ -1,23 +1,34 @@
 import type { Metadata } from "next";
-import { Libre_Franklin, Source_Sans_3, Marck_Script } from "next/font/google";
+import {
+  Plus_Jakarta_Sans,
+  Inter,
+  Cairo,
+  IBM_Plex_Sans_Arabic,
+} from "next/font/google";
 import "./globals.css";
 
-const libreFranklin = Libre_Franklin({
-  variable: "--font-libre-franklin",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["800", "900"],
+  weight: ["700", "800"],
 });
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  weight: ["400", "600"],
 });
 
-const marckScript = Marck_Script({
-  variable: "--font-marck-script",
-  subsets: ["latin"],
-  weight: "400",
+const cairo = Cairo({
+  variable: "--font-cairo",
+  subsets: ["arabic", "latin"],
+  weight: ["700"],
+});
+
+const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+  variable: "--font-ibm-arabic",
+  subsets: ["arabic"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -52,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${libreFranklin.variable} ${sourceSans.variable} ${marckScript.variable}`}
+      className={`${plusJakartaSans.variable} ${inter.variable} ${cairo.variable} ${ibmPlexSansArabic.variable}`}
     >
       <body className="min-h-screen bg-background text-foreground antialiased grain">
         {children}
