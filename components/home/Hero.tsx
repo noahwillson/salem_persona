@@ -3,7 +3,35 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-export default function Hero() {
+interface HeroProps {
+  name?: string;
+  tagline?: string;
+  availabilityStatus?: "available" | "limited" | "unavailable";
+}
+
+export default function Hero({
+  name = "Mohamed Salem",
+  tagline,
+  availabilityStatus = "available",
+}: HeroProps) {
+  const availabilityLabel =
+    availabilityStatus === "available"
+      ? "Available for Freelance"
+      : availabilityStatus === "limited"
+        ? "Limited Availability"
+        : "Not Available Currently";
+
+  const availabilityColor =
+    availabilityStatus === "available"
+      ? "bg-green-500"
+      : availabilityStatus === "limited"
+        ? "bg-yellow-500"
+        : "bg-red-500";
+
+  const nameParts = name.trim().split(/\s+/);
+  const firstName = nameParts[0] || "Mohamed";
+  const restName = nameParts.slice(1).join(" ") || "Salem";
+
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden">
       {/* Background gradient */}
@@ -18,9 +46,11 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-border rounded-full"
         >
-          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+          <span
+            className={`w-2 h-2 rounded-full animate-pulse ${availabilityColor}`}
+          />
           <span className="text-xs uppercase tracking-[0.2em] text-secondary">
-            Available for Freelance
+            {availabilityLabel}
           </span>
         </motion.div>
 
@@ -32,7 +62,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-foreground leading-[0.9] tracking-tight"
           >
-            Mohamed
+            {firstName}
           </motion.h1>
         </div>
         <div className="overflow-hidden mt-2">
@@ -42,7 +72,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight"
           >
-            <span className="text-accent">Salem</span>
+            <span className="text-accent">{restName}</span>
           </motion.h1>
         </div>
 
@@ -53,8 +83,8 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 1.0 }}
           className="mt-8 text-lg md:text-xl text-secondary max-w-lg mx-auto leading-relaxed"
         >
-          Graphic Designer & Brand Strategist crafting visual identities that
-          tell compelling stories.
+          {tagline ||
+            "Graphic Designer & Brand Strategist crafting visual identities that tell compelling stories."}
         </motion.p>
 
         {/* CTA Buttons */}
