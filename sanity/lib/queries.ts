@@ -6,6 +6,7 @@ export const siteSettingsQuery = groq`
     name,
     tagline,
     bio,
+    aboutPreviewTitle,
     aboutText,
     portrait,
     availabilityStatus,

@@ -8,11 +8,16 @@ import { useInView } from "@/hooks/useInView";
 import { ArrowUpRight } from "lucide-react";
 
 interface AboutPreviewProps {
+  title?: string;
   bio?: string;
   portrait?: { asset: { _ref: string }; alt?: string };
 }
 
-export default function AboutPreview({ bio, portrait }: AboutPreviewProps) {
+export default function AboutPreview({
+  title,
+  bio,
+  portrait,
+}: AboutPreviewProps) {
   const { ref, isInView } = useInView({ threshold: 0.2 });
 
   return (
@@ -60,7 +65,7 @@ export default function AboutPreview({ bio, portrait }: AboutPreviewProps) {
               About Me
             </span>
             <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">
-              Crafting Visual Stories
+              {title || "Crafting Visual Stories"}
             </h2>
             <p className="text-secondary text-base md:text-lg leading-relaxed mb-8">
               {bio ||

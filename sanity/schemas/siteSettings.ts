@@ -23,6 +23,12 @@ export default defineType({
       description: "Brief bio for the home page",
     }),
     defineField({
+      name: "aboutPreviewTitle",
+      title: "About Preview Title",
+      type: "string",
+      description: "Heading shown in the home page About section",
+    }),
+    defineField({
       name: "aboutText",
       title: "About Text",
       type: "array",
