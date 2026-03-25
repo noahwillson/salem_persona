@@ -10,13 +10,34 @@ const footerLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-const socialLinks = [
-  { href: "https://www.behance.net/mohamed_ac5e25", label: "Behance" },
-  { href: "#", label: "Instagram" },
-  { href: "#", label: "LinkedIn" },
-];
+interface SocialLink {
+  platform?: string;
+  url?: string;
+}
 
-export default function Footer() {
+interface FooterProps {
+  socialLinks?: SocialLink[];
+  behanceUrl?: string;
+}
+
+export default function Footer({ socialLinks = [], behanceUrl }: FooterProps) {
+  const mappedSocialLinks = socialLinks
+    .filter((link) => Boolean(link?.platform) && Boolean(link?.url))
+    .map((link) => ({
+      label: link.platform!.trim(),
+      href: link.url!.trim(),
+    }));
+
+  const defaultBehanceUrl =
+    behanceUrl?.trim() || "https://www.behance.net/mohamed_ac5e25";
+  const hasBehance = mappedSocialLinks.some(
+    (link) => link.label.toLowerCase() === "behance",
+  );
+
+  const finalSocialLinks = hasBehance
+    ? mappedSocialLinks
+    : [{ label: "Behance", href: defaultBehanceUrl }, ...mappedSocialLinks];
+
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
@@ -57,7 +78,7 @@ export default function Footer() {
               Connect
             </h3>
             <ul className="space-y-3">
-              {socialLinks.map((link) => (
+              {finalSocialLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
