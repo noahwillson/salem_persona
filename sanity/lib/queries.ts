@@ -14,7 +14,8 @@ export const siteSettingsQuery = groq`
     location,
     socialLinks,
     behanceUrl,
-    resumeFile
+    resumeFile,
+    "resumeUrl": resumeFile.asset->url
   }
 `;
 
